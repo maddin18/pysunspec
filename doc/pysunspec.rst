@@ -209,6 +209,13 @@ is scanned and the device object is created based on the SunSpec models found in
     >>> d = client.SunSpecClientDevice(client.RTU, 1, 'com6')
     >>>
 
+For Modbus TCP use insteand of the above:
+    >>> import sunspec.core.client as client
+    >>> d = client.SunSpecClientDevice(device_type=client.TCP, slave_id=1, ipaddr="192.168.2.100", ipport=502)
+    >>>
+Replace the parameters slave_id, ipaddr and ipport by the values of your device.
+The rest of this example is independent from your bus connection (Modbus RTU or Modbus TCP).
+
 Determine which models are present in the device::
 
     >>> print d.models
@@ -347,4 +354,3 @@ Enable volt_var curves::
 The close() method should be called for the device object when it is no longer needed::
 
     >>> d.close()
-
